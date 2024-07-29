@@ -124,6 +124,7 @@ const cn = {
     DeleteChat: "确认删除选中的对话？",
     DeleteToast: "已删除会话",
     Revert: "撤销",
+    Subtitle: "让每个人都能享受AI的乐趣。",
   },
   Settings: {
     Title: "设置",
