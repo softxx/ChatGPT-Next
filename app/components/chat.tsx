@@ -480,6 +480,8 @@ export function ChatActions(props: {
   const [showModelSelector, setShowModelSelector] = useState(false);
   const [showPluginSelector, setShowPluginSelector] = useState(false);
   const [showUploadImage, setShowUploadImage] = useState(false);
+  //控制显示选择模型的框
+  const [showSelectRobotModal, setShowSelectRobotModal] = useState(false);
 
   useEffect(() => {
     const show = isVisionModel(currentModel);
@@ -649,6 +651,18 @@ export function ChatActions(props: {
               showToast(plugin);
             }
           }}
+        />
+      )}
+
+      <ChatAction
+        onClick={() => setShowSelectRobotModal(true)}
+        text={currentModelName}
+        icon={<RobotIcon />}
+      />
+      {showSelectRobotModal && (
+        <SelectRobotModel
+          onClose={() => setShowSelectRobotModal(false)}
+          models={models}
         />
       )}
     </div>
@@ -1630,4 +1644,61 @@ export function Chat() {
   const chatStore = useChatStore();
   const sessionIndex = chatStore.currentSessionIndex;
   return <_Chat key={sessionIndex}></_Chat>;
+}
+export function SelectRobotModel(props: { onClose: () => void; models: any }) {
+  // const chatStore = useChatStore();
+  // const session = chatStore.currentSession();
+  // const [messages, setMessages] = useState(session.messages.slice());
+  const [selectedModelCust, setSelectedModelCust] = useState(null);
+  const handleModelSelect = (model: any) => {
+    setSelectedModelCust(model);
+    console.log(model);
+  };
+  return (
+    <div className="modal-mask">
+      <Modal
+        title={Locale.SelectModel.Title}
+        onClose={props.onClose}
+        actions={[
+          <IconButton
+            text={Locale.UI.Cancel}
+            icon={<CancelIcon />}
+            key="cancel"
+            onClick={() => {
+              props.onClose();
+            }}
+          />,
+          <IconButton
+            type="primary"
+            text={Locale.UI.Confirm}
+            icon={<ConfirmIcon />}
+            key="ok"
+            onClick={() => {
+              props.onClose();
+            }}
+          />,
+        ]}
+      >
+        <div className={styles["model-list"]}>
+          {props.models.map((model: any) => (
+            <div
+              key={`${model.name}@${model?.provider?.providerName}`}
+              className={`${styles["model-item"]} ${
+                selectedModelCust === model.name
+                  ? styles["model-item.selected"]
+                  : ""
+              }`}
+              onClick={() =>
+                handleModelSelect(
+                  `${model.name}@${model?.provider?.providerName}`,
+                )
+              }
+            >
+              {model.displayName + "(" + model.provider.providerName + ")"}
+            </div>
+          ))}
+        </div>
+      </Modal>
+    </div>
+  );
 }

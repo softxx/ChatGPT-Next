@@ -1,3 +1,4 @@
+import { title } from "process";
 import { getClientConfig } from "../config/client";
 import { SubmitKey } from "../store/config";
 
@@ -600,6 +601,13 @@ const cn = {
     },
     GenerateParams: "生成参数",
     Detail: "详情",
+  },
+  SelectModel: {
+    Title: "选择模型",
+    Model: {
+      local: "本地模型",
+      gpts: "GPTS",
+    },
   },
 };
 

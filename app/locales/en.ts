@@ -607,6 +607,13 @@ const en: LocaleType = {
     GenerateParams: "Generate Params",
     Detail: "Detail",
   },
+  SelectModel: {
+    Title: "Select Model",
+    Model: {
+      local: "Local",
+      gpts: "GPTS",
+    },
+  },
 };
 
 export default en;
