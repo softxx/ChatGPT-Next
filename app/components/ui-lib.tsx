@@ -194,7 +194,7 @@ export function ModalRobot(props: ModalProps) {
   return (
     <div
       className={
-        styles["modal-container-robot"] + ` ${isMax && styles["modal-container-max"]}`
+        styles["modal-container"] + ` ${isMax && styles["modal-container-max"]}`
       }
     >
       <div className={styles["modal-header"]}>

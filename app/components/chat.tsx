@@ -487,7 +487,10 @@ export function ChatActions(props: {
   const [showUploadImage, setShowUploadImage] = useState(false);
   //控制显示选择模型的框
   const [showSelectRobotModal, setShowSelectRobotModal] = useState(false);
-
+  //选择模型左下角的值
+  const [robotModelName, setRobotModelName] = useState(`${currentModel}(${currentProviderName})`);
+  //选择的模型的值
+  const [robotModel, setRobotModel] = useState("");
   useEffect(() => {
     const show = isVisionModel(currentModel);
     setShowUploadImage(show);
@@ -664,10 +667,78 @@ export function ChatActions(props: {
         icon={<RobotIcon />}
       />
       {showSelectRobotModal && (
-        <SelectRobotModel
-          onClose={() => setShowSelectRobotModal(false)}
-          models={models}
-        />
+        <div className="modal-mask">
+          <ModalRobot
+            title={Locale.SelectModel.Title}
+            onClose={() => setShowSelectRobotModal(false)}
+            actions={[
+              <IconButton
+                text={Locale.UI.Cancel}
+                icon={<CancelIcon />}
+                key="cancel"
+                onClick={() => {
+                  setRobotModelName(`${currentModel}(${currentProviderName})`);
+                  setShowSelectRobotModal(false);
+                }}
+              />,
+              <IconButton
+                type="primary"
+                text={Locale.UI.Confirm}
+                icon={<ConfirmIcon />}
+                key="ok"
+                onClick={() => {
+                  //执行切换模型
+                  if (!robotModel) return;
+                  const [model, providerName] = robotModel.split("@");
+                  chatStore.updateCurrentSession((session) => {
+                    session.mask.modelConfig.model = model as ModelType;
+                    session.mask.modelConfig.providerName =
+                      providerName as ServiceProvider;
+                    session.mask.syncGlobalConfig = false;
+                  });
+                  if (providerName == "ByteDance") {
+                    const selectedModel = models.find(
+                      (m) =>
+                        m.name == model && m?.provider?.providerName == providerName,
+                    );
+                    showToast(selectedModel?.displayName ?? "");
+                  } else {
+                    showToast(model);
+                  }
+                  //设置模型名称
+                  setRobotModelName(`${currentModel}(${currentProviderName})`);
+                  //关闭窗口
+                  setShowSelectRobotModal(false);
+                }}
+              />,
+            ]}
+            leftText={robotModelName}
+          >
+            <Radio.Group defaultValue={`${currentModel}@${currentProviderName}`}
+              buttonStyle="solid" onChange={(e: RadioChangeEvent) => {
+                setRobotModel(e.target.value);
+                const [model, providerName] = e.target.value.split("@");
+                setRobotModelName(`${model}(${providerName})`)
+              }}>
+              <Row gutter={[16, 6]}>
+                {models.map((model: any) => (
+                  <Col xs={24} sm={12} md={8}>
+                    <Radio.Button
+                      key={`${model.name}@${model?.provider?.providerName}`}
+                      className={styles["radio-button-robot"]}
+                      value={`${model.name}@${model?.provider?.providerName}`}
+                    >
+                      {`${model.displayName}${model?.provider?.providerName
+                        ? "(" + model?.provider?.providerName + ")"
+                        : ""
+                        }`}
+                    </Radio.Button>
+                  </Col>
+                ))}
+              </Row>
+            </Radio.Group>
+          </ModalRobot>
+        </div>
       )}
     </div>
   );
@@ -1649,9 +1720,6 @@ export function Chat() {
   return <_Chat key={sessionIndex}></_Chat>;
 }
 export function SelectRobotModel(props: { onClose: () => void; models: any }) {
-  const onchangehandle = (e: RadioChangeEvent) => {
-    console.log(e.target.value);
-  }
   return (
     <div className="modal-mask">
       <ModalRobot
@@ -1678,15 +1746,17 @@ export function SelectRobotModel(props: { onClose: () => void; models: any }) {
         ]}
         leftText="模型名称"
       >
-        <Radio.Group defaultValue="a" size="large"
-          className={styles["radio-group-robot"]}
-          buttonStyle="solid" onChange={onchangehandle}>
-          <Row gutter={[16, 16]}>
+        <Radio.Group defaultValue="a"
+          buttonStyle="solid" onChange={(e: RadioChangeEvent) => {
+            console.log(e.target.value);
+          }}>
+          <Row gutter={[16, 6]}>
             {props.models.map((model: any) => (
-              <Col xs={24} sm={12} md={8} lg={6}>
+              <Col xs={24} sm={12} md={8}>
                 <Radio.Button
+                  key={`${model.name}@${model?.provider?.providerName}`}
                   className={styles["radio-button-robot"]}
-                  value={`${model.name}@${model?.provider?.providerName}`}
+                  value={model}
                 >
                   {model.displayName + "(" + model?.provider?.providerName + ")"}
                 </Radio.Button>

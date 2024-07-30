@@ -232,9 +232,9 @@
   animation: slide-in ease 0.3s;
 
   $linear: linear-gradient(to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 1),
-    rgba(0, 0, 0, 0));
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0));
   mask-image: $linear;
 
   @mixin show {
@@ -644,23 +644,24 @@
   color: white;
 }
 
-.radio-group-robot {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .radio-group-robot {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
-.flex-robot {
-  padding: 6px;
-  align-items: center;
-}
+// .flex-robot {
+//   padding: 6px;
+//   align-items: center;
+// }
 
 .radio-button-robot {
+  height: 55px;
   width: 100%;
+  font-size: 17px;
+  line-height: 55px;
   text-align: center;
-  align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: bold;
-  height: 55px;
 }
