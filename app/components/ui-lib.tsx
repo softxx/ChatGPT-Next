@@ -114,6 +114,7 @@ interface ModalProps {
   defaultMax?: boolean;
   footer?: React.ReactNode;
   onClose?: () => void;
+  leftText?: React.ReactNode;
 }
 export function Modal(props: ModalProps) {
   useEffect(() => {
@@ -159,8 +160,65 @@ export function Modal(props: ModalProps) {
       </div>
 
       <div className={styles["modal-content"]}>{props.children}</div>
-
       <div className={styles["modal-footer"]}>
+        {props.footer}
+        <div className={styles["modal-actions"]}>
+          {props.actions?.map((action, i) => (
+            <div key={i} className={styles["modal-action"]}>
+              {action}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+export function ModalRobot(props: ModalProps) {
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        props.onClose?.();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [isMax, setMax] = useState(!!props.defaultMax);
+
+  return (
+    <div
+      className={
+        styles["modal-container-robot"] + ` ${isMax && styles["modal-container-max"]}`
+      }
+    >
+      <div className={styles["modal-header"]}>
+        <div className={styles["modal-title"]}>{props.title}</div>
+
+        <div className={styles["modal-header-actions"]}>
+          <div
+            className={styles["modal-header-action"]}
+            onClick={() => setMax(!isMax)}
+          >
+            {isMax ? <MinIcon /> : <MaxIcon />}
+          </div>
+          <div
+            className={styles["modal-header-action"]}
+            onClick={props.onClose}
+          >
+            <CloseIcon />
+          </div>
+        </div>
+      </div>
+
+      <div className={styles["modal-content"]}>{props.children}</div>
+      <div className={styles["modal-footer"]}>
+        <div className={styles["modal-footer-left"]}>{props.leftText}</div>
         {props.footer}
         <div className={styles["modal-actions"]}>
           {props.actions?.map((action, i) => (
@@ -474,8 +532,8 @@ export function Selector<T>(props: {
     Array.isArray(props.defaultSelectedValue)
       ? props.defaultSelectedValue
       : props.defaultSelectedValue !== undefined
-      ? [props.defaultSelectedValue]
-      : [],
+        ? [props.defaultSelectedValue]
+        : [],
   );
 
   const handleSelection = (e: MouseEvent, value: T) => {
@@ -501,9 +559,8 @@ export function Selector<T>(props: {
             const selected = selectedValues.includes(item.value);
             return (
               <ListItem
-                className={`${styles["selector-item"]} ${
-                  item.disable && styles["selector-item-disabled"]
-                }`}
+                className={`${styles["selector-item"]} ${item.disable && styles["selector-item-disabled"]
+                  }`}
                 key={i}
                 title={item.title}
                 subTitle={item.subTitle}

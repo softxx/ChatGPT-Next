@@ -19,11 +19,13 @@
   right: 0;
   top: calc(100% + 10px);
 }
+
 @media screen and (max-width: 600px) {
   .popover-content {
     width: auto;
   }
 }
+
 .popover-mask {
   position: fixed;
   top: 0;
@@ -62,14 +64,16 @@
     }
   }
 
-  &.vertical{
+  &.vertical {
     flex-direction: column;
     align-items: start;
-    .list-header{
-      .list-item-title{
+
+    .list-header {
+      .list-item-title {
         margin-bottom: 5px;
       }
-      .list-item-sub-title{
+
+      .list-item-sub-title {
         margin-bottom: 2px;
       }
     }
@@ -164,6 +168,90 @@
           margin-right: 20px;
         }
       }
+    }
+  }
+}
+
+.modal-container-robot {
+  box-shadow: var(--card-shadow);
+  background-color: var(--white);
+  border-radius: 12px;
+  width: 90vw;
+  max-width: 900px;
+  min-width: 400px;
+  animation: slide-in ease 0.3s;
+
+  --modal-padding: 20px;
+
+  &-max {
+    width: 95vw;
+    max-width: unset;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+
+    .modal-content {
+      max-height: unset !important;
+      flex-grow: 1;
+    }
+  }
+
+  .modal-header {
+    padding: var(--modal-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: var(--border-in-light);
+
+    .modal-title {
+      font-weight: bolder;
+      font-size: 16px;
+    }
+
+    .modal-header-actions {
+      display: flex;
+
+      .modal-header-action {
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+
+        &:hover {
+          filter: brightness(1.2);
+        }
+      }
+    }
+  }
+
+  .modal-content {
+    max-height: 40vh;
+    padding: var(--modal-padding);
+    overflow: auto;
+  }
+
+  .modal-footer {
+    padding: var(--modal-padding);
+    display: flex;
+    justify-content: flex-end;
+    border-top: var(--border-in-light);
+    box-shadow: var(--shadow);
+
+    .modal-actions {
+      display: flex;
+      align-items: center;
+
+      .modal-action {
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .modal-footer-left {
+      margin-right: auto;
+      font-size: 18px;
     }
   }
 }
@@ -304,12 +392,13 @@
   justify-content: center;
   z-index: 999;
 
-  .selector-item-disabled{
+  .selector-item-disabled {
     opacity: 0.6;
   }
 
   &-content {
     min-width: 300px;
+
     .list {
       max-height: 90vh;
       overflow-x: hidden;

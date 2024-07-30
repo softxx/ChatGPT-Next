@@ -81,6 +81,7 @@ import {
   showConfirm,
   showPrompt,
   showToast,
+  ModalRobot,
 } from "./ui-lib";
 import { useNavigate } from "react-router-dom";
 import {
@@ -101,6 +102,10 @@ import { ExportMessageModal } from "./exporter";
 import { getClientConfig } from "../config/client";
 import { useAllModels } from "../utils/hooks";
 import { MultimodalContent } from "../client/api";
+
+import { Flex, Radio, Grid, Row, Col } from 'antd';
+import type { RadioChangeEvent } from 'antd';
+
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
@@ -596,11 +601,10 @@ export function ChatActions(props: {
         <Selector
           defaultSelectedValue={`${currentModel}@${currentProviderName}`}
           items={models.map((m) => ({
-            title: `${m.displayName}${
-              m?.provider?.providerName
-                ? "(" + m?.provider?.providerName + ")"
-                : ""
-            }`,
+            title: `${m.displayName}${m?.provider?.providerName
+              ? "(" + m?.provider?.providerName + ")"
+              : ""
+              }`,
             value: `${m.name}@${m?.provider?.providerName}`,
           }))}
           onClose={() => setShowModelSelector(false)}
@@ -756,9 +760,9 @@ function _Chat() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isScrolledToBottom = scrollRef?.current
     ? Math.abs(
-        scrollRef.current.scrollHeight -
-          (scrollRef.current.scrollTop + scrollRef.current.clientHeight),
-      ) <= 1
+      scrollRef.current.scrollHeight -
+      (scrollRef.current.scrollTop + scrollRef.current.clientHeight),
+    ) <= 1
     : false;
   const { setAutoScroll, scrollDomToBottom } = useScrollToBottom(
     scrollRef,
@@ -1039,27 +1043,27 @@ function _Chat() {
       .concat(
         isLoading
           ? [
-              {
-                ...createMessage({
-                  role: "assistant",
-                  content: "……",
-                }),
-                preview: true,
-              },
-            ]
+            {
+              ...createMessage({
+                role: "assistant",
+                content: "……",
+              }),
+              preview: true,
+            },
+          ]
           : [],
       )
       .concat(
         userInput.length > 0 && config.sendPreviewBubble
           ? [
-              {
-                ...createMessage({
-                  role: "user",
-                  content: userInput,
-                }),
-                preview: true,
-              },
-            ]
+            {
+              ...createMessage({
+                role: "user",
+                content: userInput,
+              }),
+              preview: true,
+            },
+          ]
           : [],
       );
   }, [
@@ -1154,7 +1158,7 @@ function _Chat() {
         if (payload.key || payload.url) {
           showConfirm(
             Locale.URLCommand.Settings +
-              `\n${JSON.stringify(payload, null, 4)}`,
+            `\n${JSON.stringify(payload, null, 4)}`,
           ).then((res) => {
             if (!res) return;
             if (payload.key) {
@@ -1568,11 +1572,10 @@ function _Chat() {
           }}
         />
         <label
-          className={`${styles["chat-input-panel-inner"]} ${
-            attachImages.length != 0
-              ? styles["chat-input-panel-inner-attach"]
-              : ""
-          }`}
+          className={`${styles["chat-input-panel-inner"]} ${attachImages.length != 0
+            ? styles["chat-input-panel-inner-attach"]
+            : ""
+            }`}
           htmlFor="chat-input"
         >
           <textarea
@@ -1646,17 +1649,12 @@ export function Chat() {
   return <_Chat key={sessionIndex}></_Chat>;
 }
 export function SelectRobotModel(props: { onClose: () => void; models: any }) {
-  // const chatStore = useChatStore();
-  // const session = chatStore.currentSession();
-  // const [messages, setMessages] = useState(session.messages.slice());
-  const [selectedModelCust, setSelectedModelCust] = useState(null);
-  const handleModelSelect = (model: any) => {
-    setSelectedModelCust(model);
-    console.log(model);
-  };
+  const onchangehandle = (e: RadioChangeEvent) => {
+    console.log(e.target.value);
+  }
   return (
     <div className="modal-mask">
-      <Modal
+      <ModalRobot
         title={Locale.SelectModel.Title}
         onClose={props.onClose}
         actions={[
@@ -1678,27 +1676,25 @@ export function SelectRobotModel(props: { onClose: () => void; models: any }) {
             }}
           />,
         ]}
+        leftText="模型名称"
       >
-        <div className={styles["model-list"]}>
-          {props.models.map((model: any) => (
-            <div
-              key={`${model.name}@${model?.provider?.providerName}`}
-              className={`${styles["model-item"]} ${
-                selectedModelCust === model.name
-                  ? styles["model-item.selected"]
-                  : ""
-              }`}
-              onClick={() =>
-                handleModelSelect(
-                  `${model.name}@${model?.provider?.providerName}`,
-                )
-              }
-            >
-              {model.displayName + "(" + model.provider.providerName + ")"}
-            </div>
-          ))}
-        </div>
-      </Modal>
+        <Radio.Group defaultValue="a" size="large"
+          className={styles["radio-group-robot"]}
+          buttonStyle="solid" onChange={onchangehandle}>
+          <Row gutter={[16, 16]}>
+            {props.models.map((model: any) => (
+              <Col xs={24} sm={12} md={8} lg={6}>
+                <Radio.Button
+                  className={styles["radio-button-robot"]}
+                  value={`${model.name}@${model?.provider?.providerName}`}
+                >
+                  {model.displayName + "(" + model?.provider?.providerName + ")"}
+                </Radio.Button>
+              </Col>
+            ))}
+          </Row>
+        </Radio.Group>
+      </ModalRobot>
     </div>
   );
 }

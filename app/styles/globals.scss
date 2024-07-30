@@ -39,7 +39,7 @@
 
   --theme-color: var(--gray);
 
-  div:not(.no-dark) > svg {
+  div:not(.no-dark)>svg {
     filter: invert(0.5);
   }
 }
@@ -310,6 +310,7 @@ pre {
   &:hover {
     filter: brightness(0.9);
   }
+
   &:focus {
     filter: brightness(0.95);
   }
