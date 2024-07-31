@@ -724,7 +724,7 @@ export function ChatActions(props: {
               }}>
               <Row gutter={[16, 6]}>
                 {models.map((model: any) => (
-                  <Col xs={24} sm={12} md={8}>
+                  <Col xs={24} sm={12} md={8} key={`${model.name}@${model?.provider?.providerName}`}>
                     <Radio.Button
                       key={`${model.name}@${model?.provider?.providerName}`}
                       className={styles["radio-button-robot"]}
