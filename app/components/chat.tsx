@@ -717,12 +717,13 @@ export function ChatActions(props: {
             leftText={robotModelName}
           >
             <Radio.Group defaultValue={`${currentModel}@${currentProviderName}`}
+              style={{ width: "100%" }}
               buttonStyle="solid" onChange={(e: RadioChangeEvent) => {
                 setRobotModel(e.target.value);
                 const [model, providerName] = e.target.value.split("@");
                 setRobotModelName(`${model}(${providerName})`)
               }}>
-              <Row gutter={[16, 6]}>
+              <Row gutter={[16, 6]} align="middle" justify="center">
                 {models.map((model: any) => (
                   <Col xs={24} sm={12} md={8} key={`${model.name}@${model?.provider?.providerName}`}>
                     <Radio.Button
