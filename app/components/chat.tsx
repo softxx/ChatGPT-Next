@@ -723,7 +723,7 @@ export function ChatActions(props: {
                 const [model, providerName] = e.target.value.split("@");
                 setRobotModelName(`${model}(${providerName})`)
               }}>
-              <Row gutter={[16, 6]} align="middle" justify="center">
+              <Row gutter={[16, 6]} >
                 {models.map((model: any) => (
                   <Col xs={24} sm={12} md={8} key={`${model.name}@${model?.provider?.providerName}`}>
                     <Radio.Button
