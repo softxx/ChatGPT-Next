@@ -132,6 +132,7 @@ const en: LocaleType = {
     DeleteToast: "Chat Deleted",
     Revert: "Revert",
     Subtitle: "Let everyone enjoy the fun of AI.",
+    Subtitle1: "Please prioritize using the gpt-4o-mini model.",
   },
   Settings: {
     Title: "Settings",
