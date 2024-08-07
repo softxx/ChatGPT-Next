@@ -164,10 +164,11 @@ export function SideBarContainer(props: {
 export function SideBarHeader(props: {
   title?: string | React.ReactNode;
   subTitle?: string | React.ReactNode;
+  subTitle1?: string | React.ReactNode;
   logo?: React.ReactNode;
   children?: React.ReactNode;
 }) {
-  const { title, subTitle, logo, children } = props;
+  const { title, subTitle, subTitle1, logo, children } = props;
   return (
     <Fragment>
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
@@ -176,6 +177,7 @@ export function SideBarHeader(props: {
             {title}
           </div>
           <div className={styles["sidebar-sub-title"]}>{subTitle}</div>
+          <div className={styles["sidebar-sub-title1"]}>{subTitle1}</div>
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>{logo}</div>
       </div>
@@ -227,6 +229,7 @@ export function SideBar(props: { className?: string }) {
       <SideBarHeader
         title="Light AI"
         subTitle={Locale.Home.Subtitle}
+        subTitle1={Locale.Home.Subtitle1}
         logo={<ChatGptIcon />}
       >
         <div className={styles["sidebar-header-bar"]}>

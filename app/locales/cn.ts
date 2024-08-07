@@ -130,6 +130,7 @@ const cn = {
     DeleteToast: "已删除会话",
     Revert: "撤销",
     Subtitle: "让每个人都能享受AI的乐趣。",
+    Subtitle1: "请优先使用gpt-4o-mini模型。",
   },
   Settings: {
     Title: "设置",
