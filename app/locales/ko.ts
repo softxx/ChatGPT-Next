@@ -58,6 +58,8 @@ const ko: PartialLocaleType = {
     DeleteChat: "선택한 대화를 삭제하시겠습니까?",
     DeleteToast: "채팅이 삭제되었습니다.",
     Revert: "되돌리기",
+    Subtitle: "모두가 AI의 즐거움을 누릴 수 있도록.",
+    Subtitle1: "gpt-4o-mini 모델을 우선 사용하세요.",
   },
   Settings: {
     Title: "설정",
@@ -236,6 +238,13 @@ const ko: PartialLocaleType = {
     Messages: "메시지",
     Topic: "주제",
     Time: "시간",
+  },
+  SelectModel: {
+    Title: "모델 선택",
+    Model: {
+      local: "로컬 모델",
+      gpts: "GPTS",
+    },
   },
 };
 

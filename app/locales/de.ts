@@ -57,6 +57,8 @@ const de: PartialLocaleType = {
     DeleteChat: "Bestätigen Sie, um das ausgewählte Gespräch zu löschen?",
     DeleteToast: "Chat gelöscht",
     Revert: "Zurücksetzen",
+    Subtitle: "Lassen Sie jeden die Freude an KI genießen.",
+    Subtitle1: "Priorisieren Sie die Verwendung des gpt-4o-mini Modells.",
   },
   Settings: {
     Title: "Einstellungen",
@@ -240,6 +242,13 @@ const de: PartialLocaleType = {
     Messages: "Nachrichten",
     Topic: "Thema",
     Time: "Zeit",
+  },
+  SelectModel: {
+    Title: "Modell auswählen",
+    Model: {
+      local: "Lokales Modell",
+      gpts: "GPTS",
+    },
   },
 };
 

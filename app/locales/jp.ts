@@ -91,6 +91,8 @@ const jp: PartialLocaleType = {
     DeleteChat: "選択したチャットを削除してもよろしいですか？",
     DeleteToast: "チャットが削除されました",
     Revert: "元に戻す",
+    Subtitle: "誰もがAIの楽しさを享受できるように。",
+    Subtitle1: "gpt-4o-miniモデルの使用を優先してください。",
   },
   Settings: {
     Title: "設定",
@@ -303,6 +305,13 @@ const jp: PartialLocaleType = {
     Messages: "メッセージ",
     Topic: "トピック",
     Time: "時間",
+  },
+  SelectModel: {
+    Title: "モデルを選択",
+    Model: {
+      local: "ローカルモデル",
+      gpts: "GPTS",
+    },
   },
 };
 

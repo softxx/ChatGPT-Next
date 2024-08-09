@@ -97,6 +97,8 @@ const ar: PartialLocaleType = {
     DeleteChat: "هل تريد تأكيد حذف المحادثة المحددة؟",
     DeleteToast: "تم حذف الدردشة",
     Revert: "التراجع",
+    Subtitle: "دع الجميع يستمتع بمتعة الذكاء الاصطناعي.",
+    Subtitle1: "فضل استخدام نموذج gpt-4o-mini.",
   },
   Settings: {
     Title: "الإعدادات",
@@ -288,6 +290,13 @@ ${builtin} مدمجة، ${custom} تم تعريفها من قبل المستخد
     Messages: "الرسائل",
     Topic: "الموضوع",
     Time: "الوقت",
+  },
+  SelectModel: {
+    Title: "اختر النموذج",
+    Model: {
+      local: "النموذج المحلي",
+      gpts: "GPTS",
+    },
   },
 };
 

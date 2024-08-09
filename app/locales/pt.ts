@@ -126,6 +126,8 @@ const pt: PartialLocaleType = {
     DeleteChat: "Confirmar para deletar a conversa selecionada?",
     DeleteToast: "Chat Deletado",
     Revert: "Reverter",
+    Subtitle: "Deixe todos desfrutarem da diversão com a IA.",
+    Subtitle1: "Priorize o uso do modelo gpt-4o-mini.",
   },
   Settings: {
     Title: "Configurações",
@@ -483,6 +485,13 @@ const pt: PartialLocaleType = {
     Code: "Código de acesso detectado a partir da url, confirmar para aplicar? ",
     Settings:
       "Configurações detectadas a partir da url, confirmar para aplicar?",
+  },
+  SelectModel: {
+    Title: "Escolher modelo",
+    Model: {
+      local: "Modelo local",
+      gpts: "GPTS",
+    },
   },
 };
 

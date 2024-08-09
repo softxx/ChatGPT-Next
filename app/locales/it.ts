@@ -57,6 +57,8 @@ const it: PartialLocaleType = {
     DeleteChat: "Confermare la cancellazione della conversazione selezionata?",
     DeleteToast: "Chat Cancellata",
     Revert: "Revert",
+    Subtitle: "Permetti a tutti di godere del divertimento dell'IA.",
+    Subtitle1: "Preferisci l'uso del modello gpt-4o-mini.",
   },
   Settings: {
     Title: "Impostazioni",
@@ -240,6 +242,13 @@ const it: PartialLocaleType = {
     Messages: "Messaggi",
     Topic: "Argomento",
     Time: "Tempo",
+  },
+  SelectModel: {
+    Title: "Scegli modello",
+    Model: {
+      local: "Modello locale",
+      gpts: "GPTS",
+    },
   },
 };
 

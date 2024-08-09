@@ -109,6 +109,8 @@ const bn: PartialLocaleType = {
     DeleteChat: "নির্বাচিত সংলাপটি মুছতে নিশ্চিত করুন?",
     DeleteToast: "চ্যাটটি মুছেছেন",
     Revert: "পুনরায়",
+    Subtitle: "সবাইকে AI এর মজা উপভোগ করতে দিন",
+    Subtitle1: "gpt-4o-mini মডেল ব্যবহারে অগ্রাধিকার দিন।",
   },
   Settings: {
     Title: "সেটিংস",
@@ -334,6 +336,13 @@ const bn: PartialLocaleType = {
     Messages: "বার্তা",
     Topic: "টপিক",
     Time: "সময়",
+  },
+  SelectModel: {
+    Title: "মডেল নির্বাচন করুন",
+    Model: {
+      local: "স্থানীয় মডেল",
+      gpts: "GPTS",
+    },
   },
 };
 

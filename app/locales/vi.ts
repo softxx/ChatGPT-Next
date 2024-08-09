@@ -57,6 +57,8 @@ const vi: PartialLocaleType = {
     DeleteChat: "Xác nhận xóa các cuộc trò chuyện đã chọn?",
     DeleteToast: "Đã xóa cuộc trò chuyện",
     Revert: "Khôi phục",
+    Subtitle: "Hãy để mọi người đều được thưởng thức sự vui vẻ của AI.",
+    Subtitle1: "Ưu tiên sử dụng mô hình gpt-4o-mini.",
   },
   Settings: {
     Title: "Cài đặt",
@@ -236,6 +238,13 @@ const vi: PartialLocaleType = {
     Messages: "Thông điệp",
     Topic: "Chủ đề",
     Time: "Thời gian",
+  },
+  SelectModel: {
+    Title: "Chọn mô hình",
+    Model: {
+      local: "Mô hình địa phương",
+      gpts: "GPTS",
+    },
   },
 };
 

@@ -53,6 +53,8 @@ const no: PartialLocaleType = {
     DeleteChat: "Bekreft for å slette det valgte dialogen",
     DeleteToast: "Samtale slettet",
     Revert: "Tilbakestill",
+    Subtitle: "La alle nyte gleden av AI.",
+    Subtitle1: "Prioriter bruken av gpt-4o-mini modellen.",
   },
   Settings: {
     Title: "Innstillinger",
@@ -161,6 +163,13 @@ const no: PartialLocaleType = {
     Messages: "Meldingar",
     Topic: "Emne",
     Time: "Tid",
+  },
+  SelectModel: {
+    Title: "Velg modell",
+    Model: {
+      local: "Lokal modell",
+      gpts: "GPTS",
+    },
   },
 };
 

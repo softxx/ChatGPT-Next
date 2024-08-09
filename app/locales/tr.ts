@@ -57,6 +57,8 @@ const tr: PartialLocaleType = {
     DeleteChat: "Seçili sohbeti silmeyi onaylıyor musunuz?",
     DeleteToast: "Sohbet Silindi",
     Revert: "Geri Al",
+    Subtitle: "Herkesin AI eğlencesinden keyif almasını sağlayın.",
+    Subtitle1: "gpt-4o-mini modelini kullanmayı öncelikli olarak tercih edin.",
   },
   Settings: {
     Title: "Ayarlar",
@@ -241,6 +243,13 @@ const tr: PartialLocaleType = {
     Messages: "Mesajlar",
     Topic: "Konu",
     Time: "Zaman",
+  },
+  SelectModel: {
+    Title: "Modeli seç",
+    Model: {
+      local: "Yerel model",
+      gpts: "GPTS",
+    },
   },
 };
 

@@ -57,6 +57,8 @@ const ru: PartialLocaleType = {
     DeleteChat: "Вы действительно хотите удалить выбранный разговор?",
     DeleteToast: "Чат удален",
     Revert: "Отмена",
+    Subtitle: "Позвольте каждому насладиться радостью от ИИ.",
+    Subtitle1: "Приоритетно используйте модель gpt-4o-mini.",
   },
   Settings: {
     Title: "Настройки",
@@ -244,6 +246,13 @@ const ru: PartialLocaleType = {
     Messages: "Сообщения",
     Topic: "Тема",
     Time: "Время",
+  },
+  SelectModel: {
+    Title: "Выберите модель",
+    Model: {
+      local: "Локальная модель",
+      gpts: "GPTS",
+    },
   },
 };
 

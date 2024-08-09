@@ -57,6 +57,8 @@ const cs: PartialLocaleType = {
     DeleteChat: "Potvrzujete smazání vybrané konverzace?",
     DeleteToast: "Chat smazán",
     Revert: "Zvrátit",
+    Subtitle: "Nechte každého užít si radost z AI.",
+    Subtitle1: "Dejte přednost používání modelu gpt-4o-mini.",
   },
   Settings: {
     Title: "Nastavení",
@@ -238,6 +240,13 @@ const cs: PartialLocaleType = {
     Messages: "Zprávy",
     Topic: "Téma",
     Time: "Čas",
+  },
+  SelectModel: {
+    Title: "Vybrat model",
+    Model: {
+      local: "Místní model",
+      gpts: "GPTS",
+    },
   },
 };
 

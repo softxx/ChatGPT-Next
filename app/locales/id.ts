@@ -111,6 +111,8 @@ const id: PartialLocaleType = {
     DeleteChat: "Anda yakin ingin menghapus percakapan yang dipilih?",
     DeleteToast: "Percakapan telah dihapus",
     Revert: "Kembali",
+    Subtitle: "Biarkan semua orang menikmati kesenangan AI.",
+    Subtitle1: "Utamakan penggunaan model gpt-4o-mini.",
   },
   Settings: {
     Title: "Pengaturan",
@@ -385,6 +387,13 @@ const id: PartialLocaleType = {
   URLCommand: {
     Code: "Kode akses terdeteksi dari url, konfirmasi untuk mendaftar ? ",
     Settings: "Pengaturan terdeteksi dari url, konfirmasi untuk diterapkan ?",
+  },
+  SelectModel: {
+    Title: "Pilih model",
+    Model: {
+      local: "Model lokal",
+      gpts: "GPTS",
+    },
   },
 };
 

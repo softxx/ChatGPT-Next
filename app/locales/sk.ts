@@ -128,6 +128,8 @@ const sk: PartialLocaleType = {
     DeleteChat: "Potvrdiť vymazanie vybranej konverzácie?",
     DeleteToast: "Chat vymazaný",
     Revert: "Vrátiť späť",
+    Subtitle: "Nechajte každého vychutnať si potešenie z AI.",
+    Subtitle1: "Uprednostnite používanie modelu gpt-4o-mini.",
   },
   Settings: {
     Title: "Nastavenia",
@@ -499,6 +501,13 @@ const sk: PartialLocaleType = {
   URLCommand: {
     Code: "Zistený prístupový kód z URL, potvrdiť na aplikovanie?",
     Settings: "Zistené nastavenia z URL, potvrdiť na aplikovanie?",
+  },
+  SelectModel: {
+    Title: "Vyberte model",
+    Model: {
+      local: "Miestny model",
+      gpts: "GPTS",
+    },
   },
 };
 

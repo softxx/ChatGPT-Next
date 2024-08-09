@@ -125,6 +125,8 @@ const tw = {
     DeleteChat: "確定要刪除選取的對話嗎？",
     DeleteToast: "已刪除對話",
     Revert: "撤銷",
+    Subtitle: "讓每個人都能享受AI的樂趣。",
+    Subtitle1: "請優先使用gpt-4o-mini模型。",
   },
   Settings: {
     Title: "設定",
@@ -484,6 +486,13 @@ const tw = {
     Messages: "訊息",
     Topic: "主題",
     Time: "時間",
+  },
+  SelectModel: {
+    Title: "選擇模型",
+    Model: {
+      local: "本地模型",
+      gpts: "GPTS",
+    },
   },
 };
 
