@@ -43,6 +43,7 @@ const cn = {
       PinToastAction: "查看",
       Delete: "删除",
       Edit: "编辑",
+      FullScreen: "全屏",
     },
     Commands: {
       new: "新建聊天",
@@ -135,6 +136,7 @@ const cn = {
   Settings: {
     Title: "设置",
     SubTitle: "所有设置选项",
+    ShowPassword: "显示密码",
 
     Danger: {
       Reset: {
