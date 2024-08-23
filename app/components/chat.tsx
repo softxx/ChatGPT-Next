@@ -108,9 +108,8 @@ import { getClientConfig } from "../config/client";
 import { useAllModels } from "../utils/hooks";
 import { MultimodalContent } from "../client/api";
 
-import { Flex, Radio, Grid, Row, Col } from 'antd';
-import type { RadioChangeEvent } from 'antd';
-
+import { Flex, Radio, Grid, Row, Col } from "antd";
+import type { RadioChangeEvent } from "antd";
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
@@ -493,7 +492,9 @@ export function ChatActions(props: {
   //控制显示选择模型的框
   const [showSelectRobotModal, setShowSelectRobotModal] = useState(false);
   //选择模型左下角的值
-  const [robotModelName, setRobotModelName] = useState(`${currentModel}(${currentProviderName})`);
+  const [robotModelName, setRobotModelName] = useState(
+    `${currentModel}(${currentProviderName})`,
+  );
   //选择的模型的值
   const [robotModel, setRobotModel] = useState("");
   const [showSizeSelector, setShowSizeSelector] = useState(false);
@@ -612,22 +613,23 @@ export function ChatActions(props: {
         }}
       />
 
-      {false &&
+      {false && (
         <ChatAction
           onClick={() => setShowModelSelector(true)}
           text={currentModelName}
           icon={<RobotIcon />}
         />
-      }
+      )}
 
       {showModelSelector && (
         <Selector
           defaultSelectedValue={`${currentModel}@${currentProviderName}`}
           items={models.map((m) => ({
-            title: `${m.displayName}${m?.provider?.providerName
-              ? "(" + m?.provider?.providerName + ")"
-              : ""
-              }`,
+            title: `${m.displayName}${
+              m?.provider?.providerName
+                ? "(" + m?.provider?.providerName + ")"
+                : ""
+            }`,
             value: `${m.name}@${m?.provider?.providerName}`,
           }))}
           onClose={() => setShowModelSelector(false)}
@@ -789,7 +791,6 @@ export function ChatActions(props: {
                 key="ok"
                 onClick={() => {
                   //执行切换模型
-                  if (!robotModel) return;
                   const [model, providerName] = robotModel.split("@");
                   chatStore.updateCurrentSession((session) => {
                     session.mask.modelConfig.model = model as ModelType;
@@ -800,7 +801,8 @@ export function ChatActions(props: {
                   if (providerName == "ByteDance") {
                     const selectedModel = models.find(
                       (m) =>
-                        m.name == model && m?.provider?.providerName == providerName,
+                        m.name == model &&
+                        m?.provider?.providerName == providerName,
                     );
                     showToast(selectedModel?.displayName ?? "");
                   } else {
@@ -815,25 +817,34 @@ export function ChatActions(props: {
             ]}
             leftText={robotModelName}
           >
-            <Radio.Group defaultValue={`${currentModel}@${currentProviderName}`}
+            <Radio.Group
+              defaultValue={`${currentModel}@${currentProviderName}`}
               style={{ width: "100%" }}
-              buttonStyle="solid" onChange={(e: RadioChangeEvent) => {
+              buttonStyle="solid"
+              onChange={(e: RadioChangeEvent) => {
                 setRobotModel(e.target.value);
                 const [model, providerName] = e.target.value.split("@");
-                setRobotModelName(`${model}(${providerName})`)
-              }}>
-              <Row gutter={[16, 6]} >
+                setRobotModelName(`${model}(${providerName})`);
+              }}
+            >
+              <Row gutter={[16, 6]}>
                 {models.map((model: any) => (
-                  <Col xs={24} sm={12} md={8} key={`${model.name}@${model?.provider?.providerName}`}>
+                  <Col
+                    xs={24}
+                    sm={12}
+                    md={8}
+                    key={`${model.name}@${model?.provider?.providerName}`}
+                  >
                     <Radio.Button
                       key={`${model.name}@${model?.provider?.providerName}`}
                       className={styles["radio-button-robot"]}
                       value={`${model.name}@${model?.provider?.providerName}`}
                     >
-                      {`${model.displayName}${model?.provider?.providerName
-                        ? "(" + model?.provider?.providerName + ")"
-                        : ""
-                        }`}
+                      {`${model.displayName}${
+                        model?.provider?.providerName
+                          ? "(" + model?.provider?.providerName + ")"
+                          : ""
+                      }`}
                     </Radio.Button>
                   </Col>
                 ))}
@@ -934,9 +945,9 @@ function _Chat() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isScrolledToBottom = scrollRef?.current
     ? Math.abs(
-      scrollRef.current.scrollHeight -
-      (scrollRef.current.scrollTop + scrollRef.current.clientHeight),
-    ) <= 1
+        scrollRef.current.scrollHeight -
+          (scrollRef.current.scrollTop + scrollRef.current.clientHeight),
+      ) <= 1
     : false;
   const { setAutoScroll, scrollDomToBottom } = useScrollToBottom(
     scrollRef,
@@ -1217,27 +1228,27 @@ function _Chat() {
       .concat(
         isLoading
           ? [
-            {
-              ...createMessage({
-                role: "assistant",
-                content: "……",
-              }),
-              preview: true,
-            },
-          ]
+              {
+                ...createMessage({
+                  role: "assistant",
+                  content: "……",
+                }),
+                preview: true,
+              },
+            ]
           : [],
       )
       .concat(
         userInput.length > 0 && config.sendPreviewBubble
           ? [
-            {
-              ...createMessage({
-                role: "user",
-                content: userInput,
-              }),
-              preview: true,
-            },
-          ]
+              {
+                ...createMessage({
+                  role: "user",
+                  content: userInput,
+                }),
+                preview: true,
+              },
+            ]
           : [],
       );
   }, [
@@ -1332,7 +1343,7 @@ function _Chat() {
         if (payload.key || payload.url) {
           showConfirm(
             Locale.URLCommand.Settings +
-            `\n${JSON.stringify(payload, null, 4)}`,
+              `\n${JSON.stringify(payload, null, 4)}`,
           ).then((res) => {
             if (!res) return;
             if (payload.key) {
@@ -1758,10 +1769,11 @@ function _Chat() {
           }}
         />
         <label
-          className={`${styles["chat-input-panel-inner"]} ${attachImages.length != 0
-            ? styles["chat-input-panel-inner-attach"]
-            : ""
-            }`}
+          className={`${styles["chat-input-panel-inner"]} ${
+            attachImages.length != 0
+              ? styles["chat-input-panel-inner-attach"]
+              : ""
+          }`}
           htmlFor="chat-input"
         >
           <textarea
@@ -1835,4 +1847,3 @@ export function Chat() {
   const sessionIndex = chatStore.currentSessionIndex;
   return <_Chat key={sessionIndex}></_Chat>;
 }
-
