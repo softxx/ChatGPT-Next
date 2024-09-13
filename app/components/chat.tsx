@@ -196,7 +196,7 @@ function PromptToast(props: {
 
   return (
     <div className={styles["prompt-toast"]} key="prompt-toast">
-      {props.showToast && (
+      {props.showToast && context.length > 0 && (
         <div
           className={styles["prompt-toast-inner"] + " clickable"}
           role="button"
@@ -518,6 +518,8 @@ export function ChatActions(props: {
   const currentStyle =
     chatStore.currentSession().mask.modelConfig?.style ?? "vivid";
 
+  const isMobileScreen = useMobileScreen();
+
   useEffect(() => {
     const show = isVisionModel(currentModel);
     setShowUploadImage(show);
@@ -774,11 +776,13 @@ export function ChatActions(props: {
         />
       )}
 
-      <ChatAction
-        onClick={() => props.setShowShortcutKeyModal(true)}
-        text={Locale.Chat.ShortcutKey.Title}
-        icon={<ShortcutkeyIcon />}
-      />
+      {!isMobileScreen && (
+        <ChatAction
+          onClick={() => props.setShowShortcutKeyModal(true)}
+          text={Locale.Chat.ShortcutKey.Title}
+          icon={<ShortcutkeyIcon />}
+        />
+      )}
 
       <ChatAction
         onClick={() => setShowSelectRobotModal(true)}
