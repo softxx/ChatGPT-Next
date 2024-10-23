@@ -209,6 +209,8 @@ const en: LocaleType = {
       IsChecking: "Checking update...",
       FoundUpdate: (x: string) => `Found new version: ${x}`,
       GoToUpdate: "Update",
+      Success: "Update Successful.",
+      Failed: "Update Failed.",
     },
     SendKey: "Send Key",
     Theme: "Theme",
@@ -446,6 +448,17 @@ const en: LocaleType = {
           SubTitle: "Example: ",
         },
       },
+      XAI: {
+        ApiKey: {
+          Title: "XAI API Key",
+          SubTitle: "Use a custom XAI API Key",
+          Placeholder: "XAI API Key",
+        },
+        Endpoint: {
+          Title: "Endpoint Address",
+          SubTitle: "Example: ",
+        },
+      },
       Stability: {
         ApiKey: {
           Title: "Stability API Key",
@@ -502,8 +515,8 @@ const en: LocaleType = {
 
     Model: "Model",
     CompressModel: {
-      Title: "Compression Model",
-      SubTitle: "Model used to compress history",
+      Title: "Summary Model",
+      SubTitle: "Model used to compress history and generate title",
     },
     Temperature: {
       Title: "Temperature",

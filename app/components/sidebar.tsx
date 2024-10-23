@@ -166,11 +166,17 @@ export function SideBarHeader(props: {
   subTitle1?: string | React.ReactNode;
   logo?: React.ReactNode;
   children?: React.ReactNode;
+  shouldNarrow?: boolean;
 }) {
-  const { title, subTitle, subTitle1, logo, children } = props;
+  const { title, subTitle, subTitle1, logo, children, shouldNarrow } = props;
   return (
     <Fragment>
-      <div className={styles["sidebar-header"]} data-tauri-drag-region>
+      <div
+        className={`${styles["sidebar-header"]} ${
+          shouldNarrow ? styles["sidebar-header-narrow"] : ""
+        }`}
+        data-tauri-drag-region
+      >
         <div className={styles["sidebar-title-container"]}>
           <div className={styles["sidebar-title"]} data-tauri-drag-region>
             {title}
@@ -230,6 +236,7 @@ export function SideBar(props: { className?: string }) {
         subTitle={Locale.Home.Subtitle}
         subTitle1={Locale.Home.Subtitle1}
         logo={<ChatGptIcon />}
+        shouldNarrow={shouldNarrow}
       >
         <div className={styles["sidebar-header-bar"]}>
           <IconButton
