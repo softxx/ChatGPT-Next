@@ -833,7 +833,7 @@ export function ChatActions(props: {
                 onClick={() => {
                   //执行切换模型
                   const [model, providerName] = robotModel.split("@");
-                  chatStore.updateCurrentSession((session) => {
+                  chatStore.updateTargetSession(session,(session) => {
                     session.mask.modelConfig.model = model as ModelType;
                     session.mask.modelConfig.providerName =
                       providerName as ServiceProvider;
