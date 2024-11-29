@@ -136,7 +136,7 @@ function TopBanner() {
     // 如果标记不存在，存储默认值并显示横幅
     if (!bannerDismissed) {
       storage.setItem("bannerDismissed", "false");
-      setIsVisible(true); // 显示横幅
+      setIsVisible(false); // 显示横幅
     } else if (bannerDismissed === "true") {
       // 如果标记为 "true"，则隐藏横幅
       setIsVisible(false);
