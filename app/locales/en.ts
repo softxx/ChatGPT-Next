@@ -105,6 +105,7 @@ const en: LocaleType = {
       copyLastMessage: "Copy Last Reply",
       copyLastCode: "Copy Last Code Block",
       showShortcutKey: "Show Shortcuts",
+      clearContext: "Clear Context",
     },
   },
   Export: {
